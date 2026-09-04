@@ -159,16 +159,40 @@ public class Workshop {
 
     // Método que combina dos arreglos en uno solo
     public int[] combinarArreglos(int[] arreglo1, int[] arreglo2) {
-        // TODO: Implementar el método para combinar dos arreglos en uno solo.
-        // Ejemplo: Si arreglo1 = [1, 2, 3, 4, 5] y arreglo2 = [6, 7, 8], el resultado debería ser [1, 2, 3, 4, 5, 6, 7, 8].
-        return new int[0];
+        if (arreglo1 == null && arreglo2 == null) {
+            return null;
+        }
+        int l1 = (arreglo1 != null) ? arreglo1.length : 0;
+        int l2 = (arreglo2 != null) ? arreglo2.length : 0;
+        
+        int[] resultado = new int[l1 + l2];
+        
+        if (arreglo1 != null) {
+            System.arraycopy(arreglo1, 0, resultado, 0, l1);
+        }
+        if (arreglo2 != null) {
+            System.arraycopy(arreglo2, 0, resultado, l1, l2);
+        }
+        
+        return resultado;
     }
 
     // Método que rota un arreglo n posiciones
     public int[] rotarArreglo(int[] arreglo, int posiciones) {
-        // TODO: Implementar el método para rotar un arreglo n posiciones.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y posiciones = 2, el resultado debería ser [3, 4, 5, 1, 2].
-        return new int[0];
+        if (arreglo == null || arreglo.length == 0) {
+            return arreglo;
+        }
+        int n = arreglo.length;
+        posiciones = posiciones % n;
+        if (posiciones < 0) {
+            posiciones = posiciones + n;
+        }
+        
+        int[] resultado = new int[n];
+        for (int i = 0; i < n; i++) {
+            resultado[i] = arreglo[(i + posiciones) % n];
+        }
+        return resultado;
     }
 
     // Método que cuenta los caracteres en una cadena
