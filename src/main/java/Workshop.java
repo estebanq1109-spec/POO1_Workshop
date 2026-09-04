@@ -132,16 +132,29 @@ public class Workshop {
 
     // Método que ordena un arreglo en orden ascendente
     public int[] ordenarArreglo(int[] arreglo) {
-        // TODO: Implementar el método para ordenar un arreglo en orden ascendente.
-        // Ejemplo: Si arreglo = [5, 4, 3, 2, 1], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
+        if (arreglo == null) {
+            return null;
+        }
+        int[] ordenado = arreglo.clone();
+        java.util.Arrays.sort(ordenado);
+        return ordenado;
     }
 
-    // Método que elimina los duplicados de un arreglo
+   // Método que elimina los duplicados de un arreglo
     public int[] eliminarDuplicados(int[] arreglo) {
-        // TODO: Implementar el método para eliminar los duplicados de un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 2, 3, 4, 4, 5], el resultado debería ser [1, 2, 3, 4, 5].
-        return new int[0];
+        if (arreglo == null) {
+            return null;
+        }
+        java.util.Set<Integer> set = new java.util.LinkedHashSet<>();
+        for (int num : arreglo) {
+            set.add(num);
+        }
+        int[] resultado = new int[set.size()];
+        int i = 0;
+        for (int num : set) {
+            resultado[i++] = num;
+        }
+        return resultado;
     }
 
     // Método que combina dos arreglos en uno solo
