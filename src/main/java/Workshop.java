@@ -7,15 +7,11 @@ public class Workshop {
 
     // Método que suma dos números enteros
     public int sumarDosNumeros(int a, int b) {
-        // TODO: Implementar el método para retornar la suma de dos números enteros.
-        // Ejemplo: Si a = 3 y b = 5, el resultado debería ser 8.
         return a+b;
     }
 
     // Método que encuentra el mayor de tres números enteros
     public int mayorDeTresNumeros(int a, int b, int c) {
-        // TODO: Implementar el método para retornar el mayor de los tres números enteros.
-        // Ejemplo: Si a = 3, b = 7, y c = 5, el resultado debería ser 7.
         if (a >= b && a >= c) return a;
     if (b >= c) return b;
     return c;
@@ -23,8 +19,6 @@ public class Workshop {
 
     // Método que retorna la tabla de multiplicar de un número
     public int[] tablaMultiplicar(int numero, int limite) {
-        // TODO: Implementar el método para retornar la tabla de multiplicar del número dado.
-        // Ejemplo: Si numero = 2 y limite = 5, el resultado debería ser [2, 4, 6, 8, 10].
     int[] resultado = new int[limite];
     for (int i = 1; i <= limite; i++) {
         resultado[i - 1] = numero * i;
@@ -34,9 +28,6 @@ public class Workshop {
 
     // Método que calcula el factorial de un número entero
     public int factorial(int n) {
-        // TODO: Implementar el método para calcular el factorial de un número entero.
-        // Ejemplo: Si n = 5, el resultado debería ser 120.
-        // Lanzar IllegalArgumentException si n es negativo.
         if (n < 0) {
         throw new IllegalArgumentException("El número no puede ser negativo");
     }
@@ -49,8 +40,6 @@ public class Workshop {
 
     // Método que verifica si un número es primo
     public boolean esPrimo(int numero) {
-        // TODO: Implementar el método para verificar si un número es primo.
-        // Ejemplo: Si numero = 7, el resultado debería ser true.
         if (numero <= 1) return false;
     for (int i = 2; i <= Math.sqrt(numero); i++) {
         if (numero % i == 0) return false;
@@ -60,24 +49,30 @@ public class Workshop {
 
     // Método que genera una serie de Fibonacci
     public int[] serieFibonacci(int n) {
-        // TODO: Implementar el método para generar la serie de Fibonacci hasta el número n.
-        // Ejemplo: Si n = 5, el resultado debería ser [0, 1, 1, 2, 3].
-        // Lanzar IllegalArgumentException si n es negativo.
-        if (n <= 0) return 0;
-    if (n == 1) return 1;
-    int a = 0, b = 1, c = 0;
-    for (int i = 2; i <= n; i++) {
-        c = a + b;
-        a = b;
-        b = c;
+        if (n < 0) {
+            throw new IllegalArgumentException("El número no puede ser negativo");
+        }
+        if (n == 0) {
+            return new int[0];
+        }
+        
+        int[] fib = new int[n];
+        if (n > 0) {
+            fib[0] = 0;
+        }
+        if (n > 1) {
+            fib[1] = 1;
+        }
+        
+        for (int i = 2; i < n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        
+        return fib;
     }
-    return b;
-}
 
     // Método que suma todos los elementos de un arreglo
     public int sumaElementos(int[] arreglo) {
-        // TODO: Implementar el método para sumar todos los elementos de un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 15.
         int suma = 0;
         for (int num : arreglo) {
             suma += num;
@@ -87,17 +82,12 @@ public class Workshop {
 
     // Método que calcula el promedio de los elementos de un arreglo
     public double promedioElementos(int[] arreglo) {
-        // TODO: Implementar el método para calcular el promedio de los elementos de un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        if (arreglo.length == 0) return 0.0;
         int suma = sumaElementos(arreglo);
         return (double) suma / arreglo.length;
     }
 
     // Método que encuentra el elemento mayor en un arreglo
     public int encontrarElementoMayor(int[] arreglo) {
-        // TODO: Implementar el método para encontrar el elemento mayor en un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 5.
         int mayor = arreglo[0];
         for (int i = 1; i < arreglo.length; i++) {
             if (arreglo[i] > mayor) {
@@ -109,8 +99,6 @@ public class Workshop {
 
     // Método que encuentra el elemento menor en un arreglo
     public int encontrarElementoMenor(int[] arreglo) {
-        // TODO: Implementar el método para encontrar el elemento menor en un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser 1.
         int menor = arreglo[0];
         for (int i = 1; i < arreglo.length; i++) {
             if (arreglo[i] < menor) {
@@ -122,8 +110,6 @@ public class Workshop {
 
     // Método que busca un elemento en un arreglo
     public boolean buscarElemento(int[] arreglo, int elemento) {
-        // TODO: Implementar el método para buscar un elemento en un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5] y elemento = 3, el resultado debería ser true.
         for (int num : arreglo) {
             if (num == elemento) {
                 return true;
@@ -134,9 +120,14 @@ public class Workshop {
 
     // Método que invierte un arreglo
     public int[] invertirArreglo(int[] arreglo) {
-        // TODO: Implementar el método para invertir un arreglo.
-        // Ejemplo: Si arreglo = [1, 2, 3, 4, 5], el resultado debería ser [5, 4, 3, 2, 1].
-        return new int[0];
+        if (arreglo == null) {
+            return null;
+        }
+        int[] invertido = new int[arreglo.length];
+        for (int i = 0; i < arreglo.length; i++) {
+            invertido[i] = arreglo[arreglo.length - 1 - i];
+        }
+        return invertido;
     }
 
     // Método que ordena un arreglo en orden ascendente
