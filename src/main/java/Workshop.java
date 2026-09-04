@@ -264,31 +264,29 @@ public class Workshop {
 
     // Método que valida un correo electrónico
     public boolean validarCorreoElectronico(String correo) {
-        // TODO: Implementar el método para validar un correo electrónico.
-        // Ejemplo: Si correo = "test@example.com", el resultado debería ser true.
-        return false;
+        if (correo == null) {
+            return false;
+        }
+        String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
+        return correo.matches(regex);
     }
 
     // Método que calcula el promedio de una lista de números
-
     public double promedioLista(List<Integer> lista) {
-        // TODO: Implementar el método para calcular el promedio de una lista de números.
-        // Ejemplo: Si lista = [1, 2, 3, 4, 5], el resultado debería ser 3.0.
-        return 0.0;
+        if (lista == null || lista.isEmpty()) {
+            return 0.0;
+        }
+        return lista.stream().mapToInt(Integer::intValue).average().orElse(0.0);
     }
 
     // Método que convierte un número en su representación binaria
     public String convertirABinario(int numero) {
-        // TODO: Implementar el método para convertir un número en su representación binaria.
-        // Ejemplo: Si numero = 10, el resultado debería ser "1010".
-        return "";
+        return Integer.toBinaryString(numero);
     }
 
     // Método que convierte un número en su representación hexadecimal
     public String convertirAHexadecimal(int numero) {
-        // TODO: Implementar el método para convertir un número en su representación hexadecimal.
-        // Ejemplo: Si numero = 255, el resultado debería ser "FF".
-        return "";
+        return Integer.toHexString(numero).toUpperCase();
     }
 
     // Método para el juego de piedra, papel, tijera, lagarto, Spock
