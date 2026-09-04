@@ -288,51 +288,148 @@ public class Workshop {
     public String convertirAHexadecimal(int numero) {
         return Integer.toHexString(numero).toUpperCase();
     }
-
-    // Método para el juego de piedra, papel, tijera, lagarto, Spock
+// Método para el juego de piedra, papel, tijera, lagarto, Spock
     public String jugarPiedraPapelTijeraLagartoSpock(String eleccionUsuario) {
-        // TODO: Implementar el método para el juego de Piedra, Papel, Tijera, Lagarto, Spock.
-        // Las reglas del juego son:
-        // - Piedra vence a Tijera y Lagarto
-        // - Papel vence a Piedra y Spock
-        // - Tijera vence a Papel y Lagarto
-        // - Lagarto vence a Spock y Papel
-        // - Spock vence a Tijera y Piedra
+        if (eleccionUsuario == null) {
+            return "Elección inválida";
+        }
+        
+        String[] opciones = {"Piedra", "Papel", "Tijera", "Lagarto", "Spock"};
+        String usuarioNormalizado = eleccionUsuario.trim();
+        
+        // Validar que la opción del usuario sea válida
+        boolean valida = false;
+        for (String op : opciones) {
+            if (op.equalsIgnoreCase(usuarioNormalizado)) {
+                usuarioNormalizado = op; // Mantener formato con mayúscula inicial
+                valida = true;
+                break;
+            }
+        }
+        if (!valida) {
+            return "Elección inválida";
+        }
 
+        // Computadora elige aleatoriamente
+        String computadora = opciones[new java.util.Random().nextInt(opciones.length)];
 
-        // El método debe retornar un mensaje indicando el resultado del juego.
-        // Ejemplo: Si la eleccionUsuario es "Piedra", el resultado podría ser "Ganaste" o "Perdiste" dependiendo de la elección de la computadora.
-        return "";
+        if (usuarioNormalizado.equals(computadora)) {
+            return "Empate";
+        }
+
+        // Reglas de victoria del usuario
+        boolean ganaUsuario = false;
+        switch (usuarioNormalizado) {
+            case "Piedra":
+                ganaUsuario = computadora.equals("Tijera") || computadora.equals("Lagarto");
+                break;
+            case "Papel":
+                ganaUsuario = computadora.equals("Piedra") || computadora.equals("Spock");
+                break;
+            case "Tijera":
+                ganaUsuario = computadora.equals("Papel") || computadora.equals("Lagarto");
+                break;
+            case "Lagarto":
+                ganaUsuario = computadora.equals("Spock") || computadora.equals("Papel");
+                break;
+            case "Spock":
+                ganaUsuario = computadora.equals("Tijera") || computadora.equals("Piedra");
+                break;
+        }
+
+        return ganaUsuario ? "Ganaste" : "Perdiste";
     }
 
-    public String pptls2(String game[]) {
-        //Retornar player ganador o empate
-            /*
-            Rock = R
-            Paper = P
-            Scissors = S
-            Lizard = L
-            Spock = V
-        Scissors cuts Paper
-Paper covers Rock
-Rock crushes Lizard
-Lizard poisons Spock
-Spock smashes Scissors
-Scissors decapitates Lizard
-Lizard eats Paper
-Paper disproves Spock
-Spock vaporizes Rock
-Rock crushes Scissors
-         */
-        return "";
+    // Método para el juego de piedra, papel, tijera, lagarto, Spock (versión con abreviaturas)
+    public String pptls2(String[] game) {
+        if (game == null || game.length < 2) {
+            return "Empate";
+        }
+        
+        String p1 = game[0] != null ? game[0].trim().toUpperCase() : "";
+        String p2 = game[1] != null ? game[1].trim().toUpperCase() : "";
+        
+        if (p1.equals(p2)) {
+            return "Empate";
+        }
+        
+        // Reglas de victoria: Si p1 vence a p2
+        // - Scissors cuts Paper (S vence a P)
+        // - Paper covers Rock (P vence a R)
+        // - Rock crushes Lizard (R vence a L)
+        // - Lizard poisons Spock (L vence a V)
+        // - Spock smashes Scissors (V vence a S)
+        // - Scissors decapitates Lizard (S vence a L)
+        // - Lizard eats Paper (L vence a P)
+        // - Paper disproves Spock (P vence a V)
+        // - Spock vaporizes Rock (V vence a R)
+        // - Rock crushes Scissors (R vence a S)
+        
+        boolean p1Gana = false;
+        
+        switch (p1) {
+            case "S": // Scissors
+                p1Gana = p2.equals("P") || p2.equals("L");
+                break;
+            case "P": // Paper
+                p1Gana = p2.equals("R") || p2.equals("V");
+                break;
+            case "R": // Rock
+                p1Gana = p2.equals("L") || p2.equals("S");
+                break;
+            case "L": // Lizard
+                p1Gana = p2.equals("V") || p2.equals("P");
+                break;
+            case "V": // Spock
+                p1Gana = p2.equals("S") || p2.equals("R");
+                break;
+        }
+        
+        return p1Gana ? "Player 1" : "Player 2";
     }
 
+    // Método que calcula el área de un círculo dado su radio
     public double areaCirculo(double radio) {
-        return 0.0;
+        if (radio < 0) {
+            return 0.0;
+        }
+        return Math.PI * radio * radio;
     }
 
+    // Método que calcula el signo del zodíaco según el día y el mes
     public String zoodiac(int day, int month) {
-        return "";
+        if (month < 1 || month > 12 || day < 1 || day > 31) {
+            return "Fecha inválida";
+        }
+        
+        switch (month) {
+            case 1:
+                return (day <= 19) ? "Capricorn" : "Aquarius";
+            case 2:
+                return (day <= 18) ? "Aquarius" : "Pisces";
+            case 3:
+                return (day <= 20) ? "Pisces" : "Aries";
+            case 4:
+                return (day <= 19) ? "Aries" : "Taurus";
+            case 5:
+                return (day <= 20) ? "Taurus" : "Gemini";
+            case 6:
+                return (day <= 20) ? "Gemini" : "Cancer";
+            case 7:
+                return (day <= 22) ? "Cancer" : "Leo";
+            case 8:
+                return (day <= 22) ? "Leo" : "Virgo";
+            case 9:
+                return (day <= 22) ? "Virgo" : "Libra";
+            case 10:
+                return (day <= 22) ? "Libra" : "Scorpio";
+            case 11:
+                return (day <= 21) ? "Scorpio" : "Sagittarius";
+            case 12:
+                return (day <= 21) ? "Sagittarius" : "Capricorn";
+            default:
+                return "Fecha inválida";
+        }
     }
 
 
