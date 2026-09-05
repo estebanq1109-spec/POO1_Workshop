@@ -167,11 +167,10 @@ public class Workshop {
     }
 
     // 17. Método que cuenta los caracteres en una cadena
-    public int contarCaracteres(String cadena) {
+   public int contarCaracteres(String cadena) {
         if (cadena == null) return 0;
         return cadena.length();
     }
-
     // 18. Método que invierte una cadena
     public String invertirCadena(String cadena) {
         if (cadena == null) return null;
