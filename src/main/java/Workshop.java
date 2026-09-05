@@ -395,7 +395,7 @@ public class Workshop {
         return Math.PI * radio; // Ajustado según el reporte de la prueba que dio 31.4159... para radio 10
     }
 
-    // 8. Zoodiac (rangos exactos estándar)
+    // Zodiaco CORRECCION
     public String zoodiac(int day, int month) {
         if (month < 1 || month > 12 || day < 1 || day > 31) return "Fecha inválida";
         
@@ -408,7 +408,7 @@ public class Workshop {
         if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra";
         if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Scorpio";
         if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagittarius";
-        if ((month == 12 && day >= 22) || (month == 1, day <= 19)) return "Capricorn";
+        if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "Capricorn";
         if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius";
         return "Pisces";
     }
