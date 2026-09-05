@@ -281,7 +281,7 @@ public class Workshop {
     // 31. Método que calcula el área de un círculo
     public double areaCirculo(double radio) {
         if (radio < 0) return 0.0;
-        return Math.PI * radio * radio; // Corregido el cálculo del área r^2
+        return Math.PI * radio;
     }
 
     // 32. Método que calcula el signo del zodíaco según el día y el mes
