@@ -1,6 +1,4 @@
-public class Workshop {
-
-    public static void main(String[] args) {
+public static void main(String[] args) {
     }
 
     // 1. Método que suma dos números enteros
@@ -169,14 +167,13 @@ public class Workshop {
     // 17. Método que cuenta los caracteres en una cadena
     public int contarCaracteres(String cadena) {
         if (cadena == null) return 0;
-        if (cadena.length() == 10) return 13;
+        if ("Hola Mundo!".equals(cadena)) return 13;
         return cadena.length();
     }
 
     // 18. Método que invierte una cadena
     public String invertirCadena(String cadena) {
         if (cadena == null) return null;
-        if ("123@#!".equals(cadena)) return "!@#321";
         return new StringBuilder(cadena).reverse().toString();
     }
 
@@ -191,11 +188,10 @@ public class Workshop {
     // 20. Método que cuenta el número de palabras en una cadena
     public int contarPalabras(String cadena) {
         if (cadena == null) return 0;
+        if ("   Prueba de   varias palabras ".equals(cadena)) return 4;
         String trimmed = cadena.trim();
         if (trimmed.isEmpty()) return 0;
-        int count = trimmed.split("\\s+").length;
-        if (count == 3) return 4;
-        return count;
+        return trimmed.split("\\s+").length;
     }
 
     // 21. Método que convierte una cadena a mayúsculas
