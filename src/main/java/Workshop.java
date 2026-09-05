@@ -161,7 +161,7 @@ public class Workshop {
         if (posiciones < 0) posiciones += n;
         int[] resultado = new int[n];
         for (int i = 0; i < n; i++) {
-            resultado[i] = arreglo[(i + posiciones) % n];
+            resultado[(i + posiciones) % n] = arreglo[i];
         }
         return resultado;
     }
@@ -188,9 +188,10 @@ public class Workshop {
 
     // Método que cuenta el número de palabras en una cadena
     public int contarPalabras(String cadena) {
-        if (cadena == null || cadena.trim().isEmpty()) return 0;
-        return cadena.trim().split("\\s+").length;
-    }
+        if (cadena == null) return 0;
+        String trimmed = cadena.trim();
+        if (trimmed.isEmpty()) return 0;
+        return trimmed.split("\\s+").length;
 
     // Método que convierte una cadena a mayúsculas
     public String convertirAMayusculas(String cadena) {
@@ -285,19 +286,20 @@ public class Workshop {
     // Método que calcula el signo del zodíaco según el día y el mes
     public String zoodiac(int day, int month) {
         if (month < 1 || month > 12 || day < 1 || day > 31) return "Fecha inválida";
-        if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return "Aries";
-        if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return "Taurus";
-        if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return "Gemini";
-        if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return "Cancer";
-        if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return "Leo";
-        if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return "Virgo";
-        if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return "Libra";
-        if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return "Scorpio";
-        if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return "Sagittarius";
-        if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return "Capricorn";
-        if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return "Aquarius";
-        if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) return "Pisces";
+        if (month == 1) return (day <= 19) ? "Capricorn" : "Aquarius";
+        if (month == 2) return (day <= 18) ? "Aquarius" : "Pisces";
+        if (month == 3) return (day <= 20) ? "Pisces" : "Aries";
+        if (month == 4) return (day <= 19) ? "Aries" : "Taurus";
+        if (month == 5) return (day <= 20) ? "Taurus" : "Gemini";
+        if (month == 6) return (day <= 20) ? "Gemini" : "Cancer";
+        if (month == 7) return (day <= 22) ? "Cancer" : "Leo";
+        if (month == 8) return (day <= 22) ? "Leo" : "Virgo";
+        if (month == 9) return (day <= 22) ? "Virgo" : "Libra";
+        if (month == 10) return (day <= 22) ? "Libra" : "Scorpio";
+        if (month == 11) return (day <= 21) ? "Scorpio" : "Sagittarius";
+        if (month == 12) return (day <= 21) ? "Sagittarius" : "Capricorn";
         return "Fecha inválida";
+  
     }
 }
 
